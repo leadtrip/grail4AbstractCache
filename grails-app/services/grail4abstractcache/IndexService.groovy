@@ -2,22 +2,24 @@ package grail4abstractcache
 
 import cache.test.abs.Child
 import cache.test.abs.Parent
+import cache.test.standard.StandardThing
 import grails.gorm.transactions.Transactional
 
 @Transactional
 class IndexService {
 
     def allAbstract() {
-        getAbstractDynamicFinder()
-        getAbstractCriteria()
-        getChildDynamicFinder()
-        getChildCriteria()
+        [
+            getAbstractDynamicFinder(),
+            getAbstractCriteria(),
+            getChildDynamicFinder(),
+            getChildCriteria()
+        ]
     }
 
     def getAbstractDynamicFinder() {
         log.info( "================== START getAbstractDynamicFinder ==================" )
         Parent.findByParentName('Jeff')
-        log.info( "================== END getAbstractDynamicFinder ==================" )
     }
 
     def getAbstractCriteria() {
@@ -25,7 +27,6 @@ class IndexService {
         Parent.createCriteria().list {
             eq('parentName', 'Jeff')
         }
-        log.info( "================== END getAbstractCriteria ==================" )
     }
 
     def getChildDynamicFinder() {
@@ -33,7 +34,6 @@ class IndexService {
         Child.createCriteria().list {
             eq('parentName', 'Jeff')
         }
-        log.info( "================== END getChildDynamicFinder ==================" )
     }
 
     def getChildCriteria() {
@@ -41,6 +41,22 @@ class IndexService {
         Child.createCriteria().list {
             eq('parentName', 'Jeff')
         }
-        log.info( "================== END getChildCriteria ==================" )
+    }
+
+    def allNonAbstract() {
+        [getNonAbstractDynamicFinder(),
+        getNonAbstractCriteria()]
+    }
+
+    def getNonAbstractDynamicFinder() {
+        log.info("================== getNonAbstractDynamicFinder ==================")
+        StandardThing.findByName( 'Standard 1' )
+    }
+
+    def getNonAbstractCriteria() {
+        log.info("================== getNonAbstractCriteria ==================")
+        StandardThing.createCriteria().list {
+            eq 'name', 'Standard 1'
+        }
     }
 }

@@ -3,7 +3,7 @@ package grail4abstractcache
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class IndexControllerSpec extends Specification implements ControllerUnitTest<IndexController> {
+class ParentChildControllerSpec extends Specification implements ControllerUnitTest<ParentChildController> {
 
     def setup() {
     }

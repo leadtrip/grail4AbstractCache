@@ -14,6 +14,6 @@ abstract class Parent  {
     }
 
     static mapping = {
-        cache 'true'
+        cache true
     }
 }

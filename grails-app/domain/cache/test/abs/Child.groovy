@@ -8,7 +8,4 @@ class Child extends Parent {
         someData nullable: true
     }
 
-    static mapping = { }
-
-
 }
