@@ -1,3 +1,9 @@
-## Testing grails 4 hibernate caching
+### Grails 4 app which demonstrates an issue with 2nd level caching on domain hierarchies
 
-Navigate to the single controller and check the log output, load multiple times
+2nd level caching is enabled in config.
+
+The Parent domain has cache true configured in its mapping block, the Child domain extends Parent.
+
+Run the app and check the logs when accessing http://localhost:8080/ which will run a number of dynamic finder and criteria queries resulting in cache misses and database access.
+
+Navigate to http://localhost:8080/standardThing to view the same output from a simple domain with no hierarchy.
