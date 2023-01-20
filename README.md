@@ -6,4 +6,4 @@ The Parent domain has cache true configured in its mapping block, the Child doma
 
 Run the app and check the logs when accessing http://localhost:8080/ which will run a number of dynamic finder and criteria queries resulting in cache misses and database access.
 
-Navigate to http://localhost:8080/standardThing to view the same output from a simple domain with no hierarchy.
+Navigate to http://localhost:8080/standardThing to view the output from a single domain with caching enabled exhibiting the expected behaviour
