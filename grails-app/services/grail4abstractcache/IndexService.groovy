@@ -10,16 +10,16 @@ class IndexService {
 
     def allAbstract() {
         [
-            getAbstractDynamicFinder(),
-            getAbstractCriteria(),
-            getChildDynamicFinder(),
-            getChildCriteria()
+            getAbstractDynamicFinder()
+            //getAbstractCriteria()
+            //getChildDynamicFinder()
+            //getChildCriteria()
         ]
     }
 
     def getAbstractDynamicFinder() {
         log.info( "================== START getAbstractDynamicFinder ==================" )
-        Parent.findByParentName('Jeff')
+        Parent.findByParentName('Jeff' )
     }
 
     def getAbstractCriteria() {
@@ -31,9 +31,7 @@ class IndexService {
 
     def getChildDynamicFinder() {
         log.info( "================== START getChildDynamicFinder ==================" )
-        Child.createCriteria().list {
-            eq('parentName', 'Jeff')
-        }
+        Child.findByParentName( 'Jeff' )
     }
 
     def getChildCriteria() {

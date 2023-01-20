@@ -7,5 +7,4 @@ class Child extends Parent {
     static constraints = {
         someData nullable: true
     }
-
 }
