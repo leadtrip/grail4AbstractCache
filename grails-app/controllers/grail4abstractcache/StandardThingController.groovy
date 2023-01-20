@@ -14,7 +14,7 @@ class StandardThingController {
         stats.setStatisticsEnabled(true)
 
         indexService.allNonAbstract().each {
-            println it
+            log.info( "${it}" )
         }
 
         EnabledCaching enabledCaching = sessionFactory.getCache()

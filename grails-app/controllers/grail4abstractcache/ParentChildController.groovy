@@ -14,13 +14,14 @@ class ParentChildController {
         stats.setStatisticsEnabled(true)
 
         indexService.allAbstract().each {
-            println it
+            log.info( "${it}" )
         }
 
         EnabledCaching enabledCaching = sessionFactory.getCache()
 
         log.info("${enabledCaching.getCacheRegionNames()}")
         log.info("${enabledCaching.containsEntity('cache.test.abs.Parent', 2l)}")               // not in cache
+        log.info("${enabledCaching.containsEntity('cache.test.abs.Child', 2l)}")               // try the Child entityName
 
         log.info("Fetch count=" + stats.getEntityFetchCount());
         log.info("Second level hit count=" + stats.getSecondLevelCacheHitCount());
