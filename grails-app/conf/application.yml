@@ -99,6 +99,8 @@ hibernate:
         use_query_cache: true
         region:
             factory_class: 'org.hibernate.cache.ehcache.EhCacheRegionFactory'
+    persister:
+        resolver: g5abstractcache.CustomPersisterClassResolver
 dataSource:
     pooled: true
     jmxExport: true
