@@ -19,7 +19,7 @@ public class CustomSingleTableEntityPersister extends SingleTableEntityPersister
      */
     @Override
     public boolean canWriteToCache() {
-        CacheConfig cache = GrailsDomainBinder.getMapping(getMappedClass()).getCache();
+        CacheConfig cache = GrailsDomainBinder.getMapping(getMappedClass()).getCache();     // not sure how expensive this is or if there's a better way to determine
         return cache != null && cache.getEnabled();
     }
 }
