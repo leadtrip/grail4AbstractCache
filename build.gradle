@@ -76,6 +76,7 @@ dependencies {
     // non-standard
     compile 'org.hibernate:hibernate-ehcache:5.4.18.Final'
     compile 'org.hibernate:hibernate-jcache:5.4.18.Final'
+    runtimeOnly "mysql:mysql-connector-java"
 }
 
 bootRun {

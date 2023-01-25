@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  g4abstractcache-db:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=g4abstractcache
+      - MYSQL_PASSWORD=g4abstractcache
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true

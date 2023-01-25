@@ -8,6 +8,12 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class IndexService {
 
+    def findByParentName(String pn) {
+        Parent.createCriteria().list {
+            eq('parentName', pn)
+        }
+    }
+
     def allAbstract() {
         [
             getAbstractDynamicFinder()

@@ -1,22 +1,21 @@
 package grail4abstractcache
 
 import cache.test.abs.Child
-import cache.test.abs.Parent
-import cache.test.standard.StandardThing
+import grails.core.GrailsApplication
 import grails.gorm.transactions.Transactional
 
 class BootStrap {
 
-    def init = { servletContext ->
-        Parent.withTransaction {
-            new Child(parentName: 'Steve').save(failOnError: true, flush: true)
-            new Child(parentName: 'Jeff').save(failOnError: true, flush: true)
-            new Child(parentName: 'Dave').save(failOnError: true, flush: true)
-            new Child(parentName: 'Andy').save(failOnError: true, flush: true)
-        }
+    GrailsApplication grailsApplication
 
-        StandardThing.withTransaction {
-            new StandardThing(name: 'Standard 1').save(flush: true)
+    def init = { servletContext ->
+        createLotsOfChildren();
+    }
+
+    @Transactional
+    def createLotsOfChildren() {
+        (grailsApplication.config.getProperty('databaseItem.total') as Integer).times {
+            new Child(parentName: "${it}").save()
         }
     }
 

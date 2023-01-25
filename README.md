@@ -1,9 +1,21 @@
 ### Grails 4 app which demonstrates an issue with 2nd level caching on domain hierarchies
 
-2nd level caching is enabled in config.
+This branch attempts to enable 2nd level caching by wiring up a custom entity persister in config, see application.yml
 
-The Parent domain has cache true configured in its mapping block, the Child domain extends Parent.
+hibernate:
+    persister:
+        resolver: g5abstractcache.CustomPersisterClassResolver
 
-Run the app and check the logs when accessing http://localhost:8080/ which will run a number of dynamic finder and criteria queries resulting in cache misses and database access.
+By default 1500 items are added to the database in Bootstrap.
 
-To ensure 2nd level caching is working & not broken for domains not involved in a hierarchy, navigate to http://localhost:8080/standardThing to view the output from a single domain with caching enabled exhibiting the expected behaviour with hits from the cache.
+A MySql database is required and can be spun up with:
+
+`docker compose -f .\docker\docker-compose.yml up`
+
+Navigating to http://localhost:8080/parentChild/fetchAll will run 1500 queries to fetch the items from the database after which cache statistics are logged.
+
+Run repeatedly to see caching in action.
+
+Disable the persister resolver in config to compare execution times and cache 2nd level cache misses.
+
+
