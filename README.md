@@ -2,9 +2,11 @@
 
 This branch attempts to enable 2nd level caching by wiring up a custom entity persister in config, see application.yml
 
+```
 hibernate:
-    persister:
-        resolver: g5abstractcache.CustomPersisterClassResolver
+  persister:
+    resolver: g5abstractcache.CustomPersisterClassResolver
+```
 
 By default 1500 items are added to the database in Bootstrap.
 
